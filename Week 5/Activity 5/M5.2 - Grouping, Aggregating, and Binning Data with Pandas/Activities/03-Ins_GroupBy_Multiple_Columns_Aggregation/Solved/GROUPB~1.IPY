@@ -370,9 +370,7 @@
     }
    ],
    "source": [
-    "# The agg() function can be used for aggregation. \n",
-    "grouped_ufo_duration_shape = converted_ufo_df.groupby(\"shape\").agg({\"duration (seconds)\":'mean'})\n",
-    "grouped_ufo_duration_shape.head(10)"
+    "# The agg() function can be used for aggregation. \n"
    ]
   },
   {
@@ -502,9 +500,7 @@
     }
    ],
    "source": [
-    "# The agg() function can be used to pass more than one aggregation.\n",
-    "ufo_shape_avg_sum = converted_ufo_df.groupby(\"shape\")[[\"duration (seconds)\"]].agg(['mean','sum'])\n",
-    "ufo_shape_avg_sum.head(10)"
+    "# The agg() function can be used to pass more than one aggregation.\n"
    ]
   },
   {
@@ -622,10 +618,9 @@
     "# It is also possible to group a DataFrame by multiple columns\n",
     "# This returns an object with multiple indices, however, which can be harder to deal with.\n",
     "# Get the average duration in seconds of UFOs by Country and State.\n",
-    "country_state_avg_duration = converted_ufo_df.groupby(['country', 'state'])[[\"duration (seconds)\"]].mean()\n",
     "\n",
-    "# Display the DataFrame.\n",
-    "country_state_avg_duration.head(10)"
+    "\n",
+    "# Display the DataFrame.\n"
    ]
   },
   {
@@ -765,9 +760,7 @@
     }
    ],
    "source": [
-    "# The agg() function can be used to pass more than one aggregation.\n",
-    "country_state_duration_metrics = converted_ufo_df.groupby(['country', 'state'])[[\"duration (seconds)\"]].agg(['count','mean','sum'])\n",
-    "country_state_duration_metrics.head(10)"
+    "# The agg() function can be used to pass more than one aggregation.\n"
    ]
   },
   {
@@ -797,13 +790,13 @@
    ],
    "source": [
     "# One method of flattening the MultiIndex columns to a single column: use the to_flat_index() on the columns.\n",
-    "country_state_duration_flatten = country_state_duration_metrics.copy()\n",
+    "\n",
+    "\n",
     "\n",
     "# Get the columns after apply the to_flat_index()\n",
-    "country_state_duration_flatten.columns = country_state_duration_flatten.columns.to_flat_index()\n",
     "\n",
-    "# Display the columns\n",
-    "country_state_duration_flatten.columns"
+    "\n",
+    "# Display the columns\n"
    ]
   },
   {
@@ -959,9 +952,9 @@
    ],
    "source": [
     "# Use a list comprehension to join the each tuple for each column. \n",
-    "country_state_duration_flatten.columns = ['_'.join(column) for column in country_state_duration_metrics.columns]\n",
-    "# Display the flattened DataFrame\n",
-    "country_state_duration_flatten"
+    "\n",
+    "\n",
+    "# Display the flattened DataFrame\n"
    ]
   },
   {
@@ -981,11 +974,9 @@
    "source": [
     "# The second method for flattening the multiIndex to one column.\n",
     "# Get the first level of the multi-index\n",
-    "level_0 = country_state_duration_metrics.columns.get_level_values(0)\n",
-    "print(level_0)\n",
-    "# Get the second level of the multi-index\n",
-    "level_1 = country_state_duration_metrics.columns.get_level_values(1)\n",
-    "print(level_1)"
+    "\n",
+    "\n",
+    "# Get the second level of the multi-index\n"
    ]
   },
   {
@@ -1140,9 +1131,7 @@
     }
    ],
    "source": [
-    "# Combine the levels and display the DataFrame. \n",
-    "country_state_duration_metrics.columns = level_0 +\"_\"+ level_1\n",
-    "country_state_duration_metrics"
+    "# Combine the levels and display the DataFrame. \n"
    ]
   },
   {
@@ -1164,8 +1153,7 @@
     }
    ],
    "source": [
-    "# Get the new column names to rename the columns\n",
-    "country_state_duration_metrics.columns"
+    "# Get the new column names to rename the columns\n"
    ]
   },
   {
@@ -1309,10 +1297,7 @@
    ],
    "source": [
     "# Rename the columns in a multi-index DataFrame\n",
-    "country_state_duration_metrics = country_state_duration_metrics.rename(columns={\"duration (seconds)_count\": \"Number of Sightings\",\n",
-    "                                                                     \"duration (seconds)_mean\": \"Avg Duration(seconds)\",\n",
-    "                                                                     \"duration (seconds)_sum\": \"Total Duration(seconds)\"}, level=0)\n",
-    "country_state_duration_metrics.head(10)"
+    "\n"
    ]
   },
   {
